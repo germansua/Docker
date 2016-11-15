@@ -1,13 +1,16 @@
-FROM ubuntu:16:04
+FROM ubuntu:16.04
 
-RUN apt-get update -y
-RUN apt-get upgrade -y
-RUN apt-get install -y apache2 libapache2-mod-proxy-html libxml2-dev
+RUN apt-get update -qq -y
+RUN apt-get upgrade -qq  -y
+RUN apt-get install -qq -y apache2
 
 RUN a2enmod proxy
-RUN a2enmod proxy_balancer
 RUN a2enmod proxy_http
+RUN a2enmod proxy_balancer
 RUN a2enmod proxy_html
+RUN a2enmod lbmethod_byrequests 
+RUN a2enmod slotmem_shm
 
-COPY ./loadbalancer-httpd.conf /usr/local/apache2/conf/httpd.conf
-COPY ./httpd-2.4.conf /usr/local/apache2/conf/httpd.conf.old
+RUN service apache2 restart
+
+

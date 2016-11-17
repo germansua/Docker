@@ -2,15 +2,10 @@ FROM ubuntu:16.04
 
 RUN apt-get update -y && apt-get install -y apache2
 
-RUN a2enmod proxy
-RUN a2enmod proxy_http
-RUN a2enmod proxy_balancer
-RUN a2enmod proxy_html
-RUN a2enmod lbmethod_byrequests 
-RUN a2enmod slotmem_shm
+WORKDIR /etc/apache2
 
-RUN service apache2 stop
-
-CMD ["apache2", "-DFOREGROUND"] 
+CMD a2enmod proxy proxy_http proxy_balancer proxy_html lbmethod_byrequests slotmem_shm
+CMD service apache2 stop
+CMD ["apache2ctl", "-DFOREGROUND"] 
 
 EXPOSE 80

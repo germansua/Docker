@@ -1,8 +1,0 @@
-FROM httpd:2.4
-
-RUN a2enmod proxy
-RUN a2enmod proxy_balancer
-RUN a2enmod proxy_http
-
-COPY ./loadbalancer-httpd.conf /usr/local/apache2/conf/httpd.conf
-COPY ./httpd-2.4.conf /usr/local/apache2/conf/httpd.conf.old

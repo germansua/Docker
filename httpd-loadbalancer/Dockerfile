@@ -7,7 +7,7 @@ WORKDIR /etc/apache2
 COPY 000-default.conf sites-available/
 
 CMD cp mods-available/proxy.conf mods-enabled
-CMD  cp mods-available/proxy.load mods-enabled
+CMD cp mods-available/proxy.load mods-enabled
 
 # CMD  cp mods-available/proxy_ajp.load mods-enabled
 

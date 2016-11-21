@@ -28,6 +28,6 @@ CMD ["cp", "mods-available/proxy_http.load", "mods-enabled"]
 # CMD ["cp", "mods-available/proxy_scgi.load", "mods-enabled"]
 # CMD ["cp", "mods-available/proxy_wstunnel.load", "mods-enabled"]
 
-RUN chmod 777", "mods-enabled"]/*
+CMD ["chmod", "777", "mods-enabled/*"]
 CMD ["apachectl", "-DFOREGROUND"] 
 EXPOSE 80
